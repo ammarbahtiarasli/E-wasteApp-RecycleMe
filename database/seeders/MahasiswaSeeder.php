@@ -13,6 +13,6 @@ class MahasiswaSeeder extends Seeder
      */
     public function run(): void
     {
-        Mahasiswa::factory(10)->create();
+        Mahasiswa::factory(1000)->create();
     }
 }
