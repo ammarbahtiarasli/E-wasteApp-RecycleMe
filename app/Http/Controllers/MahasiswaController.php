@@ -36,17 +36,35 @@ class MahasiswaController extends Controller
 
     public function show($id)
     {
-        return view('mahasiswa.show');
+        $mahasiswa = Mahasiswa::where('id', $id)->first();
+        return view('mahasiswa.show', compact('mahasiswa'));
     }
 
     public function edit($id)
     {
-        return view('mahasiswa.edit');
+        $mahasiswa = Mahasiswa::find($id);
+        return view('mahasiswa.edit', compact('mahasiswa'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'npm' => 'required | numeric',
+            'email' => 'required',
+            'jurusan' => 'required',
+        ]);
+
+        Mahasiswa::find($request->id)
+            ->update([
+                'nama' => $request->nama,
+                'npm' => $request->npm,
+                'email' => $request->email,
+                'jurusan' => $request->jurusan,
+            ]);
+
+        return redirect()->route('mahasiswa.index')
+            ->with('success', 'Mahasiswa updated successfully');
     }
 
     public function destroy($id)

@@ -1,17 +1,16 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
             {{ __('Mahasiswa') }}
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="container mb-10">
-                <a href="{{ route('mahasiswa.create') }}" class="px-4 py-3 bg-green-500 rounded-md text-gray-800">Tambah
-                    Mahasiswa</a>
+    <div class="py-6">
+        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
+            <div class="container mb-6">
+                <x-add-button x-data="" href="{{ route('mahasiswa.create') }}">{{ __('Tambah Mahasiswa') }}</x-add-button>
             </div>
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __('Data Mahasiswa') }}
                 </div>
@@ -19,19 +18,29 @@
                     <table class="table min-w-full">
                         <thead>
                             <tr>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-900 dark:text-gray-100 uppercase tracking-wider">
+                                <th
+                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-900 uppercase dark:text-gray-100">
+                                    #
+                                </th>
+                                <th
+                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-900 uppercase dark:text-gray-100">
                                     Nama
                                 </th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-900 dark:text-gray-100 uppercase tracking-wider">
+                                <th
+                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-900 uppercase dark:text-gray-100">
                                     Npm
                                 </th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-900 dark:text-gray-100 uppercase tracking-wider">
+                                <th
+                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-900 uppercase dark:text-gray-100">
                                     Email</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-900 dark:text-gray-100 uppercase tracking-wider">
+                                <th
+                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-900 uppercase dark:text-gray-100">
                                     Jurusan</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-900 dark:text-gray-100 uppercase tracking-wider">
+                                <th
+                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-900 uppercase dark:text-gray-100">
                                     Dibuat</th>
-                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-900 dark:text-gray-100 uppercase tracking-wider">
+                                <th
+                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-900 uppercase dark:text-gray-100">
                                     Aksi
                                 </th>
                             </tr>
@@ -39,28 +48,34 @@
                         <tbody>
                             @foreach ($mahasiswa as $mhs)
                                 <tr>
-                                    <td class="px-6 py-4 text-gray-900 dark:text-gray-100 whitespace-nowrap">{{ $mhs->nama }}</td>
-                                    <td class="px-6 py-4 text-gray-900 dark:text-gray-100 whitespace-nowrap">{{ $mhs->npm }}</td>
-                                    <td class="px-6 py-4 text-gray-900 dark:text-gray-100 whitespace-nowrap">{{ $mhs->email }}</td>
-                                    <td class="px-6 py-4 text-gray-900 dark:text-gray-100 whitespace-nowrap">{{ $mhs->jurusan }}</td>
+                                    <td class="px-6 py-4 text-gray-900 dark:text-gray-100 whitespace-nowrap">
+                                        {{ $loop->index + 1 }}</td>
+                                    <td class="px-6 py-4 text-gray-900 dark:text-gray-100 whitespace-nowrap">
+                                        {{ $mhs->nama }}</td>
+                                    <td class="px-6 py-4 text-gray-900 dark:text-gray-100 whitespace-nowrap">
+                                        {{ $mhs->npm }}</td>
+                                    <td class="px-6 py-4 text-gray-900 dark:text-gray-100 whitespace-nowrap">
+                                        {{ $mhs->email }}</td>
+                                    <td class="px-6 py-4 text-gray-900 dark:text-gray-100 whitespace-nowrap">
+                                        {{ $mhs->jurusan }}</td>
                                     <td class="px-6 py-4 text-gray-900 dark:text-gray-100 whitespace-nowrap">
                                         {{ $mhs->created_at->diffForhumans() }}</td>
                                     <td class="px-6 py-4 text-gray-900 dark:text-gray-100 whitespace-nowrap">
-                                        <a href="{{ route('mahasiswa.edit', $mhs->id) }}"
-                                            class="px-3 py-2 bg-yellow-500 rounded-md text-gray-800">Edit</a>
-                                        <form action="{{ route('mahasiswa.destroy', $mhs->id) }}" method="POST"
+                                            <x-warning-button x-data="" href="{{ route('mahasiswa.edit', $mhs->id) }}">{{ __('Edit') }}</x-warning-button>
+                                        <form action="{{ route('mahasiswa.destroy', $mhs->id) }}" method="post"
                                             class="inline-block">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit"
-                                                class="px-2 py-1.5 bg-red-600 rounded-md text-gray-100 dark:text-gray-100">Hapus</button>
+                                            <x-danger-button x-data="" onclick="">{{ __('Delete') }}</x-danger-button>
                                         </form>
+
+
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 @else
-                    <div class="p-6">
+                    <div class="p-6 text-rose-500">
                         {{ __('Data tidak ditemukan') }}
                     </div>
                 @endif
