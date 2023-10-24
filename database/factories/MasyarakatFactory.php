@@ -21,6 +21,7 @@ class MasyarakatFactory extends Factory
             'nohp' => $this->faker->unique()->numerify('##########'),
             'email' => $this->faker->unique()->safeEmail(),
             'alamat' => $this->faker->randomElement(['Jl. Alun - Alun Bandung', 'Jl. Setiabudhi', 'Jl. Soekarno Hatta', 'Jl. Dago']),
+            'jenis_kelamin' => $this->faker->randomElement(['laki-laki', 'perempuan']),
             'status' => $this->faker->randomElement(['belum disetujui', 'sudah disetujui', 'ditolak']),
         ];
     }

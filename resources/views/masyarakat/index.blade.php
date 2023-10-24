@@ -25,7 +25,7 @@
                                     Nama
                                 </th>
                                 <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-900 uppercase dark:text-gray-100">
-                                    No HP
+                                    Jenis Kelamin
                                 </th>
                                 <th class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-900 uppercase dark:text-gray-100">
                                     Alamat
@@ -46,16 +46,13 @@
                                 <td class="px-6 py-4 text-gray-900 dark:text-gray-100 whitespace-nowrap">
                                     {{ $person->nama }}</td>
                                 <td class="px-6 py-4 text-gray-900 dark:text-gray-100 whitespace-nowrap">
-                                    {{ $person->nohp }}</td>
+                                    {{ ucfirst($person->jenis_kelamin) }}</td>
                                 <td class="px-6 py-4 text-gray-900 dark:text-gray-100 whitespace-nowrap">
                                     {{ $person->alamat }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <span class="{{ $person->status == 'sudah disetujui' ? 'text-green-500' : ($person->status == 'ditolak' ? 'text-red-500' : 'text-gray-500') }}">
+                                        <span class="{{ $person->status == 'sudah disetujui' ? 'text-green-500' : ($person->status == 'ditolak' ? 'text-rose-500' : 'text-gray-500') }}">
                                             {{ ucfirst($person->status) }}
                                         </span>
-                                    </td>
-                                    
                                 </td>
                                 <td class="px-6 py-4 text-gray-900 dark:text-gray-100 whitespace-nowrap">
                                     <x-detail-button x-data="" href="{{ route('masyarakat.edit', $person->id) }}">{{ __('Detail') }}</x-detail-button>

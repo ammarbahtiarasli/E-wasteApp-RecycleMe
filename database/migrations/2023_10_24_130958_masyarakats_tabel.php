@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nohp', 15);
             $table->string('email', 100);
             $table->string('alamat', 100);
+            $table->string('jenis_kelamin', 100);
             $table->string('status', 100)->default('belum disetujui');
             $table->timestamps();
         });
