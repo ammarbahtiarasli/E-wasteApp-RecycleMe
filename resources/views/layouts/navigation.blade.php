@@ -19,7 +19,7 @@
                     <x-nav-link :href="route('mahasiswa.index')" :active="request()->routeIs('mahasiswa.index')">
                         {{ __('Mahasiswa') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('masyarakat.index')" :active="request()->routeIs('masyarakat.index')">
+                    <x-nav-link :href="route('masyarakat.index')" :active="request()->routeIs('masyarakat.index', 'masyarakat.approved', 'masyarakat.not_approved')">
                         {{ __('Masyarakat') }}
                     </x-nav-link>
                     <x-nav-link>

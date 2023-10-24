@@ -47,6 +47,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/masyarakat', [MasyarakatController::class, 'index'])->name('masyarakat.index');
     Route::get('/masyarakat/create', [MasyarakatController::class, 'create'])->name('masyarakat.create');
     Route::post('/masyarakat', [MasyarakatController::class, 'store'])->name('masyarakat.store');
+    Route::get('/masyarakat/approved', [MasyarakatController::class, 'approved'])->name('masyarakat.approved');
+    Route::get('/masyarakat/not_approved', [MasyarakatController::class, 'not_approved'])->name('masyarakat.not_approved');
     Route::get('/masyarakat/{masyarakat}', [MasyarakatController::class, 'show'])->name('masyarakat.show');
     Route::get('/masyarakat/edit/{masyarakat}', [MasyarakatController::class, 'edit'])->name('masyarakat.edit');
     Route::put('/masyarakat', [MasyarakatController::class, 'update'])->name('masyarakat.update');

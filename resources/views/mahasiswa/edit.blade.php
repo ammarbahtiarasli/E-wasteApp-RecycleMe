@@ -9,7 +9,9 @@
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __('Ubah data Mahasiswa') }}
+                    <h3 class="text-xl font-semibold leading-6 tracking-tighter dark:text-gray-200">Ubah data Mahasiswa</h3>
+                    <p class="mt-1.5 text-sm text-muted-foreground dark:text-gray-300">lorem ipsum dolor sit amet
+                    </p>
                 </div>
             </div>
 

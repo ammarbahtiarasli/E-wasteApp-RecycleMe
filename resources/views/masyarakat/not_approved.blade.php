@@ -30,7 +30,7 @@
                 <div class="mb-6 overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
                     <div class="p-6 text-gray-900 dark:text-gray-100">
                         <h3 class="text-xl font-semibold leading-6 tracking-tighter dark:text-gray-200">Masyarakat</h3>
-                        <p class="mt-1.5 text-sm text-muted-foreground dark:text-gray-300">Daftar semua masyarakat</p>
+                        <p class="mt-1.5 text-sm text-muted-foreground dark:text-gray-300">Daftar masyarakat yang belum di setujui</p>
                     </div>
                 </div>
 
