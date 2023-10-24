@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MasyarakatController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -29,14 +30,27 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+// Route untuk mahasiswa
 Route::middleware('auth')->group(function () {
     Route::get('/mahasiswa', [MahasiswaController::class, 'index'])->name('mahasiswa.index');
-    Route::get('/mahasiswa/create',[MahasiswaController::class, 'create'])->name('mahasiswa.create');
+    Route::get('/mahasiswa/create', [MahasiswaController::class, 'create'])->name('mahasiswa.create');
     Route::post('/mahasiswa', [MahasiswaController::class, 'store'])->name('mahasiswa.store');
     Route::get('/mahasiswa/{mahasiswa}', [MahasiswaController::class, 'show'])->name('mahasiswa.show');
-    Route::get('/mahasiswa/edit/{mahasiswa}',[MahasiswaController::class, 'edit'])->name('mahasiswa.edit');
+    Route::get('/mahasiswa/edit/{mahasiswa}', [MahasiswaController::class, 'edit'])->name('mahasiswa.edit');
     Route::put('/mahasiswa', [MahasiswaController::class, 'update'])->name('mahasiswa.update');
     Route::delete('/mahasiswa/{mahasiswa}', [MahasiswaController::class, 'destroy'])->name('mahasiswa.destroy');
+});
+
+// Route untuk Masyarakat
+Route::middleware('auth')->group(function () {
+    Route::get('/masyarakat', [MasyarakatController::class, 'index'])->name('masyarakat.index');
+    Route::get('/masyarakat/create', [MasyarakatController::class, 'create'])->name('masyarakat.create');
+    Route::post('/masyarakat', [MasyarakatController::class, 'store'])->name('masyarakat.store');
+    Route::get('/masyarakat/{masyarakat}', [MasyarakatController::class, 'show'])->name('masyarakat.show');
+    Route::get('/masyarakat/edit/{masyarakat}', [MasyarakatController::class, 'edit'])->name('masyarakat.edit');
+    Route::put('/masyarakat', [MasyarakatController::class, 'update'])->name('masyarakat.update');
+    Route::delete('/masyarakat/{masyarakat}', [MasyarakatController::class, 'destroy'])->name('masyarakat.destroy');
 });
 
 
