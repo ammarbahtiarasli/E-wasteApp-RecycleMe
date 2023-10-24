@@ -22,6 +22,15 @@
                     <x-nav-link :href="route('masyarakat.index')" :active="request()->routeIs('masyarakat.index')">
                         {{ __('Masyarakat') }}
                     </x-nav-link>
+                    <x-nav-link>
+                        {{ __('Kurir') }}
+                    </x-nav-link>
+                    <x-nav-link>
+                        {{ __('Sampah') }}
+                    </x-nav-link>
+                    <x-nav-link>
+                        {{ __('Dropbox') }}
+                    </x-nav-link>
                 </div>
             </div>
 

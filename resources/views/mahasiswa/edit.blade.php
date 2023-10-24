@@ -18,58 +18,40 @@
             <div class="container p-8 mx-auto mt-5 bg-white dark:bg-gray-800">
                 <form action={{ route('mahasiswa.update') }} method="POST">
                     @csrf
+                    @method('PUT')
                     <input type="hidden" id="id" name="id" value="{{ $mahasiswa->id }}">
                     <div class="mb-4">
-                        <label for="nama"
-                            class="block mb-1 font-semibold text-gray-900 dark:text-gray-100">Nama</label>
-                        <input type="text" id="nama" name="nama"
-                            class="w-full px-3 py-2 bg-transparent border border-gray-500 rounded-md outline-none focus:border-blue-500"
-                            placeholder="Masukkan Nama" value="{{ old('nama', $mahasiswa->nama) }}">
-                        @error('nama')
-                            <div class="py-3 text-rose-500">{{ $message }}</div>
-                        @enderror
+                        <x-input-label for="nama" :value="__('nama')" />
+                        <x-text-input id="nama" name="nama" type="text" class="block w-full mt-1"
+                            :value="old('nama', $mahasiswa->nama)" required autofocus autocomplete="nama" />
+                        <x-input-error class="mt-2" :messages="$errors->get('nama')" />
                     </div>
 
                     <div class="mb-4">
-                        <label for="npm"
-                            class="block mb-1 font-semibold text-gray-900 dark:text-gray-100">Npm</label>
-                        <input type="number" id="npm" name="npm"
-                            class="w-full px-3 py-2 bg-transparent border border-gray-500 rounded-md outline-none focus:border-blue-500"
-                            placeholder="Masukkan Npm" maxlength="9" value="{{ old('npm', $mahasiswa->npm) }}">
-                        @error('npm')
-                            <div class="py-3 text-rose-500">{{ $message }}</div>
-                        @enderror
+                        <x-input-label for="npm" :value="__('npm')" />
+                        <x-text-input id="npm" name="npm" type="text" class="block w-full mt-1"
+                            :value="old('npm', $mahasiswa->npm)" required autocomplete="npm" />
+                        <x-input-error class="mt-2" :messages="$errors->get('npm')" />
                     </div>
 
                     <div class="mb-4">
-                        <label for="email"
-                            class="block mb-1 font-semibold text-gray-900 dark:text-gray-100">Email</label>
-                        <input type="email" id="email" name="email"
-                            class="w-full px-3 py-2 bg-transparent border border-gray-500 rounded-md focus:outline-none focus:border-blue-500"
-                            placeholder="Masukkan Email" value="{{ old('email', $mahasiswa->email) }}">
-                        @error('email')
-                            <div class="py-3 text-rose-500">{{ $message }}</div>
-                        @enderror
+                        <x-input-label for="email" :value="__('email')" />
+                        <x-text-input id="email" name="email" type="text" class="block w-full mt-1"
+                            :value="old('email', $mahasiswa->email)" required autocomplete="email" />
+                        <x-input-error class="mt-2" :messages="$errors->get('email')" />
                     </div>
 
                     <div class="mb-4">
-                        <label for="jurusan"
-                            class="block mb-1 font-semibold text-gray-900 dark:text-gray-100">Jurusan</label>
-                        <select id="jurusan" name="jurusan"
-                            class="w-full px-3 py-2 text-gray-500 bg-transparent border border-gray-500 rounded-md focus:outline-none focus:border-blue-500" value="{{ old('jurusan', $mahasiswa->jurusan) }}">
-                            <option value="selected">Pilih Jurusan</option>
+                        <x-input-label for="jurusan" :value="__('jurusan')" />
+                        <x-select id="jurusan" name="jurusan" class="block w-full mt-1">
+                            <option :value="old('jurusan', $mahasiswa - > jurusan)" selected>{{ $mahasiswa->jurusan }}
+                            </option>
                             <option value="teknik Informatika">Teknik Infomatika</option>
                             <option value="teknik Mesin">Teknik Mesin</option>
                             <option value="teknik Pangan">Teknik Pangan</option>
-                        </select>
-                        @error('jurusan')
-                            <div class="py-3 text-rose-500">{{ $message }}</div>
-                        @enderror
+                        </x-select>
                     </div>
-
-                    <button type="submit"
-                        class="px-4 py-2 mt-3 font-semibold text-gray-800 bg-green-500 rounded-md hover:bg-green-600">Ubah
-                        Data</button>
+                    <x-primary-button type="submit">{{ __('Ubah data') }}</x-primary-button>
                 </form>
             </div>
 

@@ -12,7 +12,8 @@
             </div>
             <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __('Data Mahasiswa') }}
+                    <h3 class="text-xl font-semibold leading-6 tracking-tighter dark:text-gray-200">Mahasiswa</h3>
+                    <p class="mt-1.5 text-sm text-muted-foreground dark:text-gray-300">Data semua Mahasiswa</p>
                 </div>
                 @if ($mahasiswa->count() > 0)
                     <table class="table min-w-full">
@@ -66,17 +67,16 @@
                                             class="inline-block">
                                             @csrf
                                             @method('DELETE')
-                                            <x-danger-button x-data="" onclick="">{{ __('Delete') }}</x-danger-button>
+                                            <x-danger-button x-data="" onclick="confirm('Mahasiswa ini akan dihapus ?');">{{ __('Delete') }}</x-danger-button>
                                         </form>
-
-
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 @else
                     <div class="p-6 text-rose-500">
-                        {{ __('Data tidak ditemukan') }}
+                        {{ __('Data mahasiswa tidak ada.') }}
                     </div>
                 @endif
                 <div class="p-6">
