@@ -14,5 +14,7 @@ class Masyarakat extends Model
         'nohp',
         'email',
         'alamat',
+        'jenis_kelamin',
+        'status',
     ];
 }
