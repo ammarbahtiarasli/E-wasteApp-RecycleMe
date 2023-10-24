@@ -9,7 +9,7 @@ class MasyarakatController extends Controller
 {
     public function index()
     {
-        $masyarakat = Masyarakat::all();
+        $masyarakat = Masyarakat::latest()->paginate(10);
         return view('masyarakat.index', compact('masyarakat'));
     }
 
