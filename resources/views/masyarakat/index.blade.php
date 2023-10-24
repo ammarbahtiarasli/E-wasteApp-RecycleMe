@@ -7,13 +7,11 @@
 
     <div class="py-6">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="container mb-6">
-                <x-add-button x-data=""
-                    href="{{ route('masyarakat.create') }}">{{ __('Tambah Masyarakat') }}</x-add-button>
-            </div>
+
             <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __('Data Masyarakat') }}
+                    <h3 class="text-xl font-semibold leading-6 tracking-tighter dark:text-gray-200">Masyarakat</h3>
+                    <p class="mt-1.5 text-sm text-muted-foreground dark:text-gray-300">daftar semua masyarakat yang sudah registrasi</p>
                 </div>
                 @if ($masyarakat->count() > 0)
                     <table class="table min-w-full">
@@ -58,7 +56,7 @@
                                         {{ $person->alamat }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <span
-                                            class="{{ $person->status == 'sudah disetujui' ? 'text-green-500' : ($person->status == 'ditolak' ? 'text-red-500' : 'text-gray-500') }}">
+                                            class="{{ $person->status == 'sudah disetujui' ? 'text-green-500' : ($person->status == 'ditolak' ? 'text-rose-500' : 'text-yellow-300') }}">
                                             {{ ucfirst($person->status) }}
                                         </span>
                                     </td>
