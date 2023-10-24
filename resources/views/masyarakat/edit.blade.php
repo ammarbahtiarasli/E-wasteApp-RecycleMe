@@ -7,78 +7,66 @@
 
     <div class="py-12">
         <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
-                <div class="p-6 text-white dark:text-gray-100">
-                    <h3 class="text-xl font-semibold leading-6 tracking-tighter dark:text-gray-200">Informasi Detail</h3>
-                    <p class="mt-1.5 text-sm text-muted-foreground dark:text-gray-300">Detail masyarakat yang sudah registrasi</p>
-                </div>
-            </div>
+            <div class="p-5 bg-white rounded-md shadow-lg dark:bg-gray-800">
+                <h3 class="mb-6 text-2xl font-semibold text-gray-900 dark:text-white">Informasi Detail</h3>
+                <h4 class="mb-4 text-xl font-medium text-gray-700 dark:text-gray-300">Detail Masyarakat yang sudah disetujui</h4>
 
-            <div class="container p-8 mx-auto mt-5 bg-white dark:bg-gray-800">
                 <form action={{ route('masyarakat.update') }} method="POST">
                     @csrf
-                    <input type="hidden" id="id" name="id" value="{{ $masyarakat->id }}">
-                    <div class="mb-4">
-                        <label for="nama" class="block mb-1 font-semibold text-white dark:text-white">Nama</label>
-                        <input type="text" id="nama" name="nama"
-                            class="w-full px-3 py-2 text-gray-900 bg-transparent border border-gray-500 rounded-md outline-none focus:border-blue-500 dark:text-gray-100"
-                            placeholder="Masukkan Nama" value="{{ old('nama', $masyarakat->nama) }}">
-                        @error('nama')
-                            <div class="py-3 text-rose-500">{{ $message }}</div>
-                        @enderror
+                    @method('PUT') 
+                    <input type="hidden" name="id" id="id" value="{{ $masyarakat->id }} ">
+                    <div class="grid grid-cols-2 gap-4">
+
+                        <!-- Nama -->
+                        <div class="p-4 bg-gray-500 rounded-md dark:bg-gray-700">
+                            <label for="nama" class="block mb-2 font-semibold text-white">Nama</label>
+                            <input type="text" name="nama" id="nama" class="w-full px-3 py-2 text-gray-900 bg-transparent border border-gray-500 rounded-md outline-none focus:border-blue-500" value="{{ $masyarakat->nama }}">
+                        </div>
+
+                        <!-- Jenis Kelamin -->
+                        <div class="p-4 bg-gray-100 rounded-md dark:bg-gray-700">
+                            <label for="jenis_kelamin" class="block mb-2 font-semibold text-gray-400">Jenis Kelamin</label>
+                            <select name="jenis_kelamin" class="w-full px-3 py-2 text-gray-500 bg-transparent border border-gray-500 rounded-md" id="jenis_kelamin">
+                                <option value="laki-laki" {{ $masyarakat->jenis_kelamin === 'laki-laki' ? 'selected' : '' }}>Laki - Laki</option>
+                                <option value="perempuan" {{ $masyarakat->jenis_kelamin === 'perempuan' ? 'selected' : '' }}>Perempuan</option>
+                            </select>
+                        </div>
+
+                        <!-- No HP -->
+                        <div class="p-4 bg-gray-100 rounded-md dark:bg-gray-700">
+                            <label for="no_hp" class="block mb-2 font-semibold text-gray-400">No HP</label>
+                            <input type="text" name="nohp" id="nohp" class="w-full px-3 py-2 text-gray-900 bg-transparent border border-gray-500 rounded-md outline-none focus:border-blue-500" value="{{ $masyarakat->nohp }}">
+                        </div>
+
+                        <!-- Email -->
+                        <div class="p-4 bg-gray-100 rounded-md dark:bg-gray-700">
+                            <label for="email" class="block mb-2 font-semibold text-gray-400">Email</label>
+                            <input type="email" name="email" id="email" class="w-full px-3 py-2 text-gray-900 bg-transparent border border-gray-500 rounded-md outline-none focus:border-blue-500" value="{{ $masyarakat->email }}">
+                        </div>
+
+                        <!-- Status -->
+                        <div class="p-4 bg-gray-100 rounded-md dark:bg-gray-700">
+                            <label for="status" class="block mb-2 font-semibold text-gray-400">Status</label>
+                            <select name="status" id="status" class="w-full px-3 py-2 text-gray-500 bg-transparent border border-gray-500 rounded-md" value="{{ old('status', $masyarakat->status) }}">
+                                <option value="selected">Pilih Status</option>
+                                <option value="ditolak" {{ $masyarakat->status === 'ditolak' ? 'selected' : '' }}>Ditolak</option>
+                                <option value="sudah disetujui" {{ $masyarakat->status === 'sudah disetujui' ? 'selected' : '' }}>Sudah Disetujui</option>
+                            </select>
+                        </div>
+
+                        <!-- Alamat -->
+                        <div class="col-span-2 p-4 bg-gray-100 rounded-md dark:bg-gray-700">
+                            <label for="alamat" class="block mb-2 font-semibold text-gray-400">Alamat</label>
+                            <textarea name="alamat" class="w-full px-3 py-2 text-gray-900 bg-transparent border border-gray-500 rounded-md outline-none focus:border-blue-500" rows="4">{{ $masyarakat->alamat }}</textarea>
+                        </div>
+
                     </div>
 
-                    <div class="mb-4">
-                        <label for="no_hp" class="block mb-1 font-semibold text-gray-400 dark:text-gray-100">No
-                            HP</label>
-                        <input type="number" id="no_hp" name="no_hp"
-                            class="w-full px-3 py-2 text-gray-900 bg-transparent border border-gray-500 rounded-md outline-none dark:text-gray-100 focus:border-blue-500"
-                            placeholder="Masukkan No HP" value="{{ old('no_hp', $masyarakat->nohp) }}">
-                        @error('no_hp')
-                            <div class="py-3 text-rose-500">{{ $message }}</div>
-                        @enderror
+                    <div class="mt-4">
+                        <button type="submit" class="px-4 py-2 font-semibold text-gray-800 bg-green-500 rounded-md hover:bg-green-600 dark:bg-green-700 dark:hover:bg-green-800">Simpan</button>
                     </div>
-
-                    <div class="mb-4">
-                        <label for="email"
-                            class="block mb-1 font-semibold text-gray-400 dark:text-gray-100">Email</label>
-                        <input type="email" id="email" name="email"
-                            class="w-full px-3 py-2 text-gray-900 bg-transparent border border-gray-500 rounded-md dark:text-gray-100s focus:outline-none focus:border-blue-500 dark:text-gray-100"
-                            placeholder="Masukkan Email" value="{{ old('email', $masyarakat->email) }}">
-                        @error('email')
-                            <div class="py-3 text-rose-500">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-4">
-                        <label for="alamat"
-                            class="block mb-1 font-semibold text-gray-400 dark:text-gray-100">Alamat</label>
-                        <textarea id="alamat" name="alamat"
-                            class="w-full px-3 py-2 text-gray-900 bg-transparent border border-gray-500 rounded-md outline-none dark:text-gray-100 focus:border-blue-500"
-                            placeholder="Masukkan Alamat">{{ old('alamat', $masyarakat->alamat) }}</textarea>
-                        @error('alamat')
-                            <div class="py-3 text-rose-500">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    {{-- status --}}
-                    <div class="mb-4">
-                        <label for="status"
-                            class="block mb-1 font-semibold text-gray-400 dark:text-gray-100">Status</label>
-                        <select id="status" name="status"
-                            class="w-full px-3 py-2 text-gray-500 bg-transparent border border-gray-500 rounded-md dark:text-grey-200 focus:outline-none focus:border-blue-500"
-                            value="{{ old('status', $masyarakat->status) }}">
-                            <option value="selected">Pilih Status</option>
-                            <option value="aktif">Ditolak</option>
-                            <option value="nonaktif">Disetujui</option>
-                        </select>
-                        @error('status')
-                            <div class="py-3 text-rose-500">{{ $message }}</div>
-                        @enderror
-                        <x-primary-button type="submit">{{ __('Ubah data') }}</x-primary-button>
                 </form>
             </div>
-
         </div>
     </div>
 </x-app-layout>
