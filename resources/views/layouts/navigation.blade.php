@@ -6,8 +6,9 @@
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block w-auto text-gray-800 fill-current h-9 dark:text-gray-200" />
+                        <x-application-logo class="block w-auto text-gray-800 fill-current h-9 dark:text-gray-200 me-3" />
                     </a>
+                    <p class="dark:text-gray-200">{{ __('RecycleMe') }}</p>
                 </div>
 
                 <!-- Navigation Links -->
