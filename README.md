@@ -8,7 +8,7 @@ composer install
 ```
 Jangan lupa untuk menginstall semua node package yang kita butuhkan seperti:
 ```bash
-npm install && npm run build
+npm install 
 ```
 Jika ingin dikembangkan, bisa dengan menjalankan
 ```bash
@@ -30,8 +30,11 @@ DB_PASSWORD=
 ```
 Setelah itu, jalankan perintah berikut pada terminal Anda.
 ```bash
-php artisan migrate:fresh --seed
+php artisan migrate:fresh
+
+php artisan db:seed --class=MahasiswaSeeder
+php artisan db:seed --class=MasyarakatSeeder
 ```
 Setelah itu, jalankan `artisan serve` untuk memulai laravel nya.
 
-Silakan buat PR jika ingin membuat perubahan ya.
+Silakan buat PR jika ingin membuat perubahan.
