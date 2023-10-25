@@ -9,7 +9,7 @@ class MasyarakatController extends Controller
 {
     public function index()
     {
-        $masyarakat = Masyarakat::latest()->paginate(6);
+        $masyarakat = Masyarakat::latest()->paginate(8);
         return view('masyarakat.index', compact('masyarakat'));
     }
 
@@ -56,12 +56,12 @@ class MasyarakatController extends Controller
 
     public function approved()
     {
-        $masyarakat = Masyarakat::where('status', 'sudah disetujui')->paginate(6);
+        $masyarakat = Masyarakat::where('status', 'sudah disetujui')->paginate(8);
         return view('masyarakat.approved', compact('masyarakat'));
     }
     public function not_approved()
     {
-        $masyarakat = Masyarakat::where('status', 'belum disetujui')->paginate(6);
+        $masyarakat = Masyarakat::where('status', 'belum disetujui')->paginate(8);
         return view('masyarakat.not_approved', compact('masyarakat'));
     }
 }
