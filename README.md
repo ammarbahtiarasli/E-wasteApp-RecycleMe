@@ -1,3 +1,5 @@
+## Dokumentasi RecycleMe
+
 ```bash
 git clone https://github.com/ammarbahtiarasli/laravel-breeze-tailwind-crud-sederhana.git 'project-name'
 cd project-name
@@ -28,13 +30,16 @@ DB_DATABASE=laravel
 DB_USERNAME=root
 DB_PASSWORD=
 ```
-Setelah itu, jalankan perintah berikut pada terminal Anda.
+Setelah itu, jalankan perintah berikut pada terminal.
 ```bash
+php artisan migrate
 php artisan migrate:fresh
 
 php artisan db:seed --class=MahasiswaSeeder
 php artisan db:seed --class=MasyarakatSeeder
 ```
-Setelah itu, jalankan `artisan serve` untuk memulai laravel nya.
+Setelah itu, jalankan `artisan serve` untuk memulai server laravel nya.
 
-Silakan buat PR jika ingin membuat perubahan.
+Silakan buat PR jika ingin membuat perubahan, Sesuaikan dengan branch nya masing-masing. 
+
+`Last Edited 30/10/23 @recycle.me`
