@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\ProviderController;
 use App\Http\Controllers\MasyarakatController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,9 +18,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [OrderController::class, 'index'])->name('welcome');
+Route::post('/checkout', [OrderController::class, 'checkout']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// with github
+// with api github and google
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 
@@ -59,10 +59,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/masyarakat', [MasyarakatController::class, 'update'])->name('masyarakat.update');
     Route::delete('/masyarakat/{masyarakat}', [MasyarakatController::class, 'destroy'])->name('masyarakat.destroy');
 });
-
-
-
-
 
 
 require __DIR__ . '/auth.php';

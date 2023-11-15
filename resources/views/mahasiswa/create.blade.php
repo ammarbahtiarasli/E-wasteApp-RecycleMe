@@ -52,7 +52,6 @@
                     <x-primary-button>{{ __('Save') }}</x-primary-button>
                 </form>
             </div>
-
         </div>
     </div>
 </x-app-layout>

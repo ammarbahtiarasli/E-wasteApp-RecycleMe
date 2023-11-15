@@ -57,6 +57,5 @@ class ProviderController extends Controller
             'provider_token' => $SocialUser->token,
         ]);
 
-
     }
 }
